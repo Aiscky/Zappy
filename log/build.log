@@ -1,0 +1,116 @@
+Started by upstream project "B4-PSU-335/Zappy/LYN-jobs" build number 2
+originally caused by:
+ Started by upstream project "B4-PSU-335/Zappy/global" build number 2
+ originally caused by:
+  Started by user Marvin
+[EnvInject] - Loading node environment variables.
+Building remotely on slave.ci.epitech.eu in workspace /home/jenkins/workspace/B4-PSU-335/Zappy/LYN/wautel_l
+
+Deleting project workspace... done
+
+Cloning the remote Git repository
+Cloning repository file:///home/jenkins/mouli/B4-PSU-335/Zappy
+ > git init /home/jenkins/workspace/B4-PSU-335/Zappy/LYN/wautel_l # timeout=10
+Fetching upstream changes from file:///home/jenkins/mouli/B4-PSU-335/Zappy
+ > git --version # timeout=10
+ > git -c core.askpass=true fetch --tags --progress file:///home/jenkins/mouli/B4-PSU-335/Zappy +refs/heads/*:refs/remotes/local/*
+ > git config remote.local.url file:///home/jenkins/mouli/B4-PSU-335/Zappy # timeout=10
+ > git config --add remote.local.fetch +refs/heads/*:refs/remotes/local/* # timeout=10
+ > git config remote.local.url file:///home/jenkins/mouli/B4-PSU-335/Zappy # timeout=10
+Fetching upstream changes from file:///home/jenkins/mouli/B4-PSU-335/Zappy
+ > git -c core.askpass=true fetch --tags --progress file:///home/jenkins/mouli/B4-PSU-335/Zappy +refs/heads/*:refs/remotes/local/*
+Seen branch in repository local/master
+Seen 1 remote branch
+Checking out Revision eef8a93594efe214b8f31911e4a23d12956d23f7 (local/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f eef8a93594efe214b8f31911e4a23d12956d23f7
+ > git rev-list 88a75289fad0f56a53b948d6013f33fcd488a788 # timeout=10
+Cloning the remote Git repository
+Cloning repository ramassage-tek@git.epitech.eu:/wautel_l/PSU_2014_zappy
+ > git init /home/jenkins/workspace/B4-PSU-335/Zappy/LYN/wautel_l/rendu # timeout=10
+Fetching upstream changes from ramassage-tek@git.epitech.eu:/wautel_l/PSU_2014_zappy
+ > git --version # timeout=10
+using GIT_SSH to set credentials 
+ > git -c core.askpass=true fetch --tags --progress ramassage-tek@git.epitech.eu:/wautel_l/PSU_2014_zappy +refs/heads/*:refs/remotes/origin/*
+ > git config remote.origin.url ramassage-tek@git.epitech.eu:/wautel_l/PSU_2014_zappy # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url ramassage-tek@git.epitech.eu:/wautel_l/PSU_2014_zappy # timeout=10
+Fetching upstream changes from ramassage-tek@git.epitech.eu:/wautel_l/PSU_2014_zappy
+using GIT_SSH to set credentials 
+ > git -c core.askpass=true fetch --tags --progress ramassage-tek@git.epitech.eu:/wautel_l/PSU_2014_zappy +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision caa2a6809404c6c939e1ef4d34d42d799eb95a53 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f caa2a6809404c6c939e1ef4d34d42d799eb95a53
+ > git rev-list 0d8976869c20ee21a6b5cd9138c11011a18bb95e # timeout=10
+No emails were triggered.
+No emails were triggered.
+[wautel_l] $ /bin/sh -xe /tmp/hudson6804209440505238687.sh
++ docker run --rm -m 512M --ulimit cpu=300 --name Zappy-wautel_l -e DBUSER=wautel_l -e CITY=LYN -v /home/jenkins/workspace/B4-PSU-335/Zappy/LYN/wautel_l:/home/bill/workspace casimir/blinux-make
++ /home/bill/norme_deepthought.py rendu -score -nocheat -swap_traces -malloc
++ '[' -f Makefile ']'
++ '[' -f rendu/Makefile ']'
++ make -C rendu
+make: Entering directory `/home/bill/workspace/rendu'
+cc    -c -o lib/my_function.o lib/my_function.c
+cc    -c -o lib/my_putnbr.o lib/my_putnbr.c
+cc    -c -o lib/my_getnbr_base.o lib/my_getnbr_base.c
+cc    -c -o lib/my_getnbr.o lib/my_getnbr.c
+cc    -c -o lib/my_strlen.o lib/my_strlen.c
+cc    -c -o lib/my_putchar.o lib/my_putchar.c
+cc    -c -o lib/my_putstr.o lib/my_putstr.c
+cc    -c -o lib/my_stock_int_in_char.o lib/my_stock_int_in_char.c
+cc    -c -o lib/my_printf.o lib/my_printf.c
+cc    -c -o lib/convert_base.o lib/convert_base.c
+cc    -c -o lib/my_revstr.o lib/my_revstr.c
+cc    -c -o lib/my_sendrcv.o lib/my_sendrcv.c
+gcc -o server serv/main.o serv/server.o serv/parse_arg.o serv/obj.o serv/socket.o serv/list.o serv/time.o serv/team.o serv/util.o serv/map.o serv/inv.o serv/parse_act.o serv/parse_sui.o serv/printfct.o serv/inv_sui.o serv/fctserv.o serv/voir_sui.o serv/check.o serv/check_lvl.o serv/check_lastlvl.o serv/verif_cours.o serv/graph.o serv/act.o serv/graph_sui.o serv/voir.o serv/fork.o serv/fork2.o serv/map2.o serv/list2.o lib/my_function.o lib/my_putnbr.o lib/my_getnbr_base.o lib/my_getnbr.o lib/my_strlen.o lib/my_putchar.o lib/my_putstr.o lib/my_stock_int_in_char.o lib/my_printf.o lib/convert_base.o lib/my_revstr.o lib/my_sendrcv.o -Wall -Werror -Wextra
+g++    -c -o client_src/main.o client_src/main.cpp
+In file included from client_src/../include/Network.hh:16:0,
+                 from client_src/main.cpp:12:
+client_src/../include/includeGraphic.hh:24:30: fatal error: SFML/Graphics.hpp: No such file or directory
+ #include  <SFML/Graphics.hpp>
+                              ^
+compilation terminated.
+make: *** [client_src/main.o] Error 1
+make: Leaving directory `/home/bill/workspace/rendu'
++ cp -rn rendu/Makefile rendu/Memo_Zappy rendu/Utils.hpp rendu/arch.txt rendu/assets rendu/auteur rendu/client_src rendu/graphic_src rendu/include rendu/lib rendu/sdl_files rendu/serv rendu/server rendu/zappy-gfx-linux64 rendu/zappy-gfx-linux64.tgz rendu/zappy-server-linux .
++ bugs -version
+Current version: 0.13.8
++ bugs -out 'graph txt xunit' -login wautel_l -city LYN
+==> Test suite: test zappy
+====> Test: test connection simple
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+====> Test: test connection max 1
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+====> Test: test connection max 2
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+====> Test: test voir
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+====> Test: test pose
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+====> Test: test connect overflow 1
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+====> Test: test connect inventaire
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+====> Test: test connect fork
+make: *** No rule to make target `zappy_server'.  Stop.
+Command failed: Got 2 but should have 0
+2015/07/04 13:17:44 Test Zappy found
+Recording test results
+Build step 'Publish JUnit test result report' changed build result to UNSTABLE
+Archiving artifacts
+Email was triggered for: Always
+Sending email for trigger: Always
+Sending email to: Lucie.Wautelet@epitech.eu
+Email was triggered for: Always
+Sending email for trigger: Always
+Sending email to: Lucie.Wautelet@epitech.eu

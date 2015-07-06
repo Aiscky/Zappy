@@ -1,0 +1,137 @@
+Architecture:
+
+Inclure la SFML 1.6 directement dans le dossier zappy !
+
+Handle sockets correctly.
+Faire le ratio pour la taille des sprites.
+Gestion expulse ?
+Faire un max temps pour éviter surchauffe (Impossible d'être aussi opti que leur serveur)
+Faire toutes les actions !
+Gestion du temps dans les joueurs !
+Faire des windows (map/joueur) ?
+Animations = mort !
+
+Améliorer la gestion du proco !
+Gestion des oeufs ? Joueurs 2.0 !
+
+Make sprite change when you hover them ? (nice idea)
+Ajouter la gestion des sons !
+
+Améliorer le zoom en fonction de la position du curseur (Trop Cool)
+Pas de message d'erreur pour un mauvais port du client (Dire Dylan)
+
+Ressource
+	*Ressource draw once
+	*Draw randomly on grid 9x9
+	*Draw Tile from back to front
+	*IsRessource ? -> Draw Ressource !
+	*Do a little map !
+	*Do Map[3][3] and run through from end;
+
+Initializing (Network, Assets)
+Loop Select {
+	eventManager of server input;
+	inputManager for mouse and keyboard;
+	Clear;
+	Draw;
+}
+
+*Map
+	*Map de Texture (vector + coordinate ?)
+	*Map de TileContent[x, y, TileContent] /* Food / Pierres */
+		*FileContent (Ressource / Player)
+		-> Players* + Map[id, vector pos] 		- Moins chiant à déclaré.
+		-> Players* + Players *					- Plus direct pour récupérer.
+		-> Vector des ressources ? vector[RESSOURCE TYPE][OBJ RESSOURCE]
+	*Accès Coordonnés -> Ressources + Players
+	*Accès IdPlayer -> Player
+	*Draw textureMap;
+	*Draw ressourcemap / Players;
+
+Draw Order:
+	Draw Background
+	Draw cases
+	Draw ressources and players depending on their location.
+	Draw Bubbles (msg)
+	Draw Windows
+
+Interaction:
+	Scrool to change view
+	Open window for info on Tile/Player
+	Close
+	Change the speed of the game ?
+	Drag to move on the map ?
+	Mute the game ?
+
+*Player
+	*Level
+	*Coordinates
+	*Direction
+	*Inventary
+	*Team name
+	//*Sprite -- Stocke all sprites and draw the one you want
+	*Timer (At the end go back to basic state)
+	*Have to be draw at the right time and be accessible easily
+	*Player dead = suppression from map Player and from Map
+	*Changement direction/action -> changement de sprite.
+	/* Deplacer les joueurs entre les case ou envoyer les joueur */
+
+*TimeManager
+	*Time Unit
+
+*ViewManager
+	*View
+
+*InputManager
+	*Scrolling changing view
+		*Modification of ViewManager
+			*Block by max view ? move the view so it fit in the max view
+	*Draw window on clicking a Tile/Player (different)
+		*Access Tile/Player
+			*Check Players first, Then Tiles.
+		*Modification of Window and drawing
+	*Moving with drag
+	*Access view
+
+*ImageManager
+	*Map des images (vector ?)
+	
+*AudioManager
+	*Map des sons + musiques (vector ?)
+
+*EventManager
+	*Pointeur sur la Map (For modifications)
+	*Managers
+
+*WindowPlayer
+
+*WindowTile
+	
+*Map
+	*Width
+	*Height
+	*Map of all Tiles
+	*Setting the view depending on size
+	*View
+	
+*Tile
+	*Sprite
+	*x, y (2d)
+	*Vector of Vector Ressources (.size for number)
+
+*Managers
+	*RenderWindow
+	*Network
+	*ImageManager
+	*ViewManager
+
+Current tasks:
+
+-Think about the architecture of the rendering.
+-Gestion of the drawing of map + ressources
+-Mouvement de la souris
+
+Following tasks:
+
+-Audio
+-Handling game end

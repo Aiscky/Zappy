@@ -1,0 +1,133 @@
+(I) UNIVERS
+
+1) Les ressources :
+
+   a) Les Pierres (génération aléatoire par le serveur)
+          La Linemate
+          La Deraumêre
+          Le Sibur
+          La Mendiane
+          Le Phiras
+          La Thystame
+
+   b) La Nourriture
+      	  1 Unité de nourriture = 126 unités de temps
+
+2) Les Trantoriens :
+   a) Activités des Trantoriens :
+      - Se nourrir
+      - Chercher des Pierres
+
+   b) Caractéristiques :
+      - 1 Trantorien = 1 case
+      - Trantoriens se croisent sans soucis
+      - Orientation impossible à distinguer
+
+3) But du Jeu :
+   a) Chaque joueur joue en équipe d'un total de n joueur (défini par l'option "-c"). Tous les membres sont lvl 1. Il faut passer lvl 8.
+
+   b) La victoire revient à la première équipe dont 6 membres atteignent le lvl 8. (Cela signifie qu'un match oppose minimum 2 équipes de 6).
+
+   c) Pour monter de niveau, on se referrera au tableau suivant :
+
+lvl   player 	  linemate deraumêre	      sibur  mendiane phiras thystame
+1-2	1		1	0		0	0	0	0
+2-3	2		1	1		1	0	0	0
+3-4	2		2	0		1	0	2	0
+4-5	4		1	1		2	0	1	0
+5-6	4		1	2		1	3	0	0
+6-7	6		1	2		3	0	1	0
+7-8	6		2	2		2	2	2	1
+
+4) Fonctionnement :
+   a) Vision:
+      - à chaque lvl up, vision + 1. De base, vision en pyramide : une case pour y - 1, 3 cases pour y - 2, etc...
+      	Par exemple : si J représente le joueur :
+							      1|2|3
+								0
+								J
+      - au niveau 1, la vision couvre 4 cases (joueur présent sur la 0 ou non ? Si OUI, schéma ci-dessus faux : fusionner "J" et "0").
+      - le client écrit "voir" sur l'entrée standard et le serveur lui renvoit la description du champ de vision (ex pour un lvl 1 : {, joueur deraumere, , } car dans la case 1 sont présents un joueur et une pierre.)
+
+   b) Ouïe
+      - quand un joueur veut envoyer un message aux autres, il peut envoyer un BroadCast. Avec la commande "broadcast [texte]", il émet un message depuis la case de laquelle il se trouve.
+      - Le son se propage de la manière suivante : Une "droite" est tracée entre la source sonore et le destinataire. La case du destinataire est entourée de nombres allant de 1 à 8, le 1 étant la case devant lui et les numéros allant dans l'ordre des aiguilles d'une montre (donc le 2 devant à gauche, et le 8 devant à droite).
+      - Lorsque le son atteint le destinataire, il le reçoit sous cette forme : "message [X], [texte]" ou texte est le message et X la case d'où vient le son.
+
+
+
+
+(II) FONCTIONNEMENT
+
+Lancement du serveur : ./serveur -p [numero de port] -x [largeur du Monde] -y [Hauteur du Monde] -n [Noms Equipes séparés par espace] -c [Nombre de client / équipe] -t [délai des actions]
+Lancement du client : ./client -n [Nom de l'Equipe] -p [numero de port] -h [nom de la machine, "localhost" par défaut]
+
+Au lancement, chaque client a 10 PV. Il peut donc survivre 1260 unités de temps (1260 * 1 / t secondes).
+(Le sujet ne reparle jamais des PV derrière, utilité un peu floue... se réferrer au temps avant tout, seule utilité étant qu'une unité de nourriture = 1PV = 126 unités de temps. Donc 10 PV = 1260 t et chaque nourriture redonne 1PV.)
+
+
+   	      	     	    Le client peut envoyer les informations suivantes :
+
+Action	       	       	   			Commande	Delai		Réponse
+
+avance d’une case				avance 	     	7/t		ok
+tourne à droite de 90 degrés			droite 		7/t		ok
+tourne à gauche de 90 degrés			gauche		7/t		ok
+voir						voir		7/t		case1, case2, case3 ...
+inventaire					inventaire	1/t		linemate n, sibur n, ...
+prend objet					prend objet	7/t		ok/ko
+pose objet					pose objet	7/t		ok/ko
+expulse les joueurs de cette case		expulse	        7/t		ok/ko
+broadcast texte					broadcast texte	7/t		ok
+débute l’incantation				incantation	300/t		elevation en cours niveau actuel : K
+fork un joueur					fork		42/t		ok
+Nombre de slots non utilisés par l’équipe	connect_nbr	0		valeur
+mort d’un joueur	     	 		-    		-  		mort
+
+     	  				Toutes les commandes seront obligatoirement terminées par à '\n'.
+
+
+
+La connection d'un client au serveur se passe comme suit :
+   1) Le client ouvre une socket sur le port du serveur
+   2) [client] <----   "Bienvenue\n"   	<---- [serveur]
+   3) [client] ---->  "[NOM EQUIPE]\n" 	----> [serveur]		=	Le serveur vérifie que l'équipe existe et que des places sont disponibles
+   4) [client] <---- "[NUM. CLIENT]\n" 	<---- [serveur]		=	Le serveur informe le client du nombre de places dispos (si ce nombre est égal à 0, le client est rejeté).
+   5) [client] <----    "[X] [Y]\n" 	<---- [serveur]		=	Si le client est connecté, le serveur lui envoie ensuite les dimensions X par Y du monde.
+
+
+Pour la gestion du TEMPS, aucune requête ne doit être blocante. Tous les clients, en mouvement, en repos ou en pleine action doivent voir la partie s'écouler de manière fluide et constante.
+De plus, l'unité adopté par les Trantoriens est la seconde.
+De fait, si t vaut 1, le délai de la commande "avance" sera de 7/1 secondes, soit 7 secondes.
+Par défaut, la valeur de t est de 100. Néanmoins, même s'il est personnalisé via les arguments, sa valeur sera toujours un entier, impérativement.
+
+
+Pour la gestion des OBJETS, ils sont tous similaires, aussi bien sur la map que dans l'inventaire.
+Concrètement, cela veut dire qu'une linemate aura la même valeur qu'une autre linemate. L'inventaire, à la manière d'un RPG style pokemon, indiquera donc simplement "linemate     x2" si le joueur en possède 2.
+
+
+Pour la gestion de la REPRODUCTION, un joueur peut décider de pondre un oeuf via la commande "fork". Le joueur ayant pondu l'oeuf peut continuer sa partie normalement une fois l'oeuf pondu.
+La naissance d'un nouveau-né autorise la connexion d'un nouveau client dans l'équipe, un personnage étant de nouveau vacant. Son orientation est définie aléatoirement.
+Avant de pondre un oeuf, le joueur peut utiliser la commande "connect_nbr" pour recevoir du serveur l'information suivante :
+      	 [nombre de connections en cours pour cette équipe] et [nombre de connections autorisées restantes pour cette équipe]
+La ponte d'un oeuf prend 42 unités de temps (donc 42/t, soit 0.42 secondes par défaut).
+Sa gestation, elle, prend 600 unités de temps (donc 600/t, soit 6 secondes par défaut).
+
+Pour la gestion de l'INVENTAIRE, la commande "inventaire" demande au serveur le contenu de l'inventaire du joueur émettant la requête.
+Le serveur répond au format suivant : "{nourriture 875, sibur 2, linemate 4, sibur 0, mendiane 1... , deraumêre 0}\n".
+
+Pour la gestion de l'EXPULSION, un joueur peut expulser tous les joueurs présents sur la même case que lui via la commande "expulse".
+Lorsque c'est le cas, tous les joueurs présents sur ladite case se voient poussés d'une case en direction de leur orientation actuelle.
+Ils reçoivent alors le message suivant : "déplacement : [X]\n", où X représente la case d'où vient le joueur. (lequel, l'expulseur ou l'expulsé ? flou du sujet, demander précisions...).
+
+
+Enfin, pour la gestion de l'INTERFACE GRAPHIQUE :
+       - La représentation en 2D de cases et d'icônes est un minimum OBLIGATOIRE, néanmoins la 3D apporte un réel plus au projet, et donc à la note.
+       - Les langages autorisés sont le C et le C++.
+       - Les librairies autorisés sont la SDL pour le C, et GDL, SFML et QT pour le C++.
+L'interface 2D est obligatoire et doit donc être parfaitement fonctionnelle, mais la 3D sera mieux récompensée si fonctionnelle mais moche plutôt que belle mais brouillonne. La 3D doit être pleinement fonctionnelle avant d'être belle à voir.
+
+
+Direction :   0
+	     3j1
+	      2

@@ -1,0 +1,193 @@
+act.c:  while (s_info->list != NULL)
+act.c:      if (s_info->list->id == n)
+act.c:	s_info->list = delete_in_list(s_info->list, count);
+act.c:      if (s_info->list != NULL && s_info->list->next != NULL)
+act.c:	s_info->list = s_info->list->next;
+act.c:  if (s_info->elevation[socket_com[n].level - 1](s_info, n,
+broadcast.c:  xref = socket_com[n].x + co[0] - s_info->width / 2;
+broadcast.c:  yref = socket_com[n].y + co[1] - s_info->height / 2;
+broadcast.c:  if (abs(xref) > s_info->width / 2)
+broadcast.c:    (xref > 0) ? xref -= s_info->width : xref += s_info->width;
+broadcast.c:  if (abs(yref) > s_info->height / 2)
+broadcast.c:    (yref > 0) ? yref -= s_info->height : yref += s_info->height;
+broadcast.c:  co[0] = s_info->width / 2;
+broadcast.c:  co[1] = s_info->hegiht / 2;
+broadcast.c:	  my_printsd(s_info->socket_com[i].socket, "ok");
+broadcast.c:	  dprintf(s_info->socket_com[i].socket, "ok\n");
+check.c:  if (socket_com[i].team == NULL || (strcmp(socket_com[i].team, s_info->team[inc]) == 0))
+check.c:  if ((team = malloc(sizeof(int) * s_info->totteam)) == NULL)
+check.c:  while (inc < s_info->totteam)
+fctserv.c:	  (socket_com[n].y == 0) ? socket_com[n].y = s_info->height-1
+fctserv.c:	(socket_com[n].y == s_info->height - 1) ? socket_com[n].y = 0
+fctserv.c:	(socket_com[n].x == 0) ? socket_com[n].x = s_info->width-1
+fctserv.c:	(socket_com[n].x == s_info->width - 1) ? socket_com[n].x = 0
+fctserv.c:  dprintf(s_info->graph, "ppo %d %d %d\n", socket_com[n].socket,
+fctserv.c:  dprintf(s_info->graph, "pex %d\n", socket_com[n].socket);
+fctserv.c:	      dprintf(s_info->graph, "ppo %d %d %d %d\n", socket_com[n].socket,
+fctserv.c:  while (strcmp(s_info->team[i], socket_com[n].team) != 0)
+fctserv.c:  nb = s_info->client - s_info->nbteam[i] + parc_list_egg(i);
+fork2.c:  while (s_info->egg != NULL)
+fork2.c:      if (s_info->egg->id > id)
+fork2.c:	id = s_info->egg->id;
+fork2.c:      s_info->egg = s_info->egg->next;
+fork2.c:  while (s_info->egg != NULL)
+fork2.c:      if (s_info->egg->id > id && s_info->egg->team == team)
+fork2.c:	id = s_info->egg->id;
+fork2.c:      s_info->egg = s_info->egg->next;
+fork.c:      tmp->beg = (float)clock() / CLOCKS_PER_SEC + 42.0 / s_info->delay;
+fork.c:      tmp->end = tmp->beg + 600 / s_info->delay;
+fork.c:      if (s_info->egg == NULL)
+fork.c:	  ele = s_info->egg;
+fork.c:  dprintf(s_info->graph, "edi %d\n", list->id);
+fork.c:  while (s_info->egg != NULL)
+fork.c:      if (s_info->egg->team == team && s_info->egg->end > time &&
+fork.c:	  s_info->egg->beg < time)
+fork.c:      s_info->egg = s_info->egg->next;
+fork.c:  dprintf(s_info->graph,"pfk %d\n", socket_com[n].socket);
+fork.c:  while (s_info->team[i] != 0)
+fork.c:      if (strcmp(s_info->team[i] , socket_com[n].team) == 0)
+fork.c:	s_info->egg = add_list_egg(s_info, n, i);
+fork.c:  while (s_info->egg != NULL)
+fork.c:      if (s_info->egg->end < time)
+fork.c:	s_info->egg = remove_list_egg(s_info->egg, count, s_info);
+fork.c:      if (s_info->egg != NULL && s_info->egg->next != NULL)
+fork.c:	s_info->egg = s_info->egg->next;
+graph.c:	  dprintf(s_info->graph, "ppo %d %d %d\n",
+graph.c:      dprintf(s_info->graph, "msz %d %d\n", s_info->width, s_info->height);
+graph.c:      my_printsd("msz %d %d", s_info->width, s_info->height);
+graph_sui.c:	dprintf(s_info->graph, "plv %d %d\n", socket_com[i].socket, socket_com[i].level);
+graph_sui.c:      dprintf(s_info->graph, "sgt %d\n", s_info->delay);
+graph_sui.c:      s_info->delay = recup_coord(buffer, 1);
+graph_sui.c:      dprintf(s_info->graph, "sgt %d\n", s_info->delay);
+inv.c:  while (s_info->map[x][y][inc] != -2)
+inv.c:      if (s_info->map[x][y][inc] != -1)
+inv.c:	  stone = s_info->map[x][y][inc];
+inv.c:  while (s_info->map[x][y][inc] != -2)
+inv.c:      if (s_info->map[x][y][inc] == i)
+inv.c:  dprintf(s_info->graph, " %d", res);
+inv.c:  dprintf(s_info->graph, "bct %d %d", x, y);
+inv.c:  dprintf(s_info->graph, "\n");
+inv.c:  dprintf(s_info->graph, "pin %d %d %d", socket_com[n].socket,
+inv.c:  my_printsd(s_info->graph, "pin %d %d %d", socket_com[n].socket,
+inv.c:      dprintf(s_info->graph, " %d", socket_com[n].inventaire[i]);
+inv.c:      my_printsd(s_info->graph, " %d", socket_com[n].inventaire[i]);
+inv.c:  dprintf(s_info->graph, "\n");
+inv_sui.c:  while (s_info->map[x][y][inc] != -2)
+inv_sui.c:      if (s_info->map[x][y][inc] == stone)
+list.c:  if (socket_com[n].socket == s_info->graph)
+list.c:      if (s_info->list == NULL)
+list.c:	  ele = s_info->list;
+list.c:  while (s_info->list != NULL)
+list.c:      dprintf(1, "%s\n\t\n", s_info->list->buffer);
+list.c:      /*      if (socket_com[s_info->list->id].end <= time)
+list.c:	  dprintf(1, "\t%3f:  fin\n", socket_com[s_info->list->id].end);
+list.c:	  check_incantation(s_info->list->id, s_info);
+list.c:	  my_parse_buff(s_info->list->buffer, s_info->list->id, s_info);
+list.c:	  s_info->list = delete_in_list(s_info->list, count);
+list.c:      dprintf(1, "\t%3f:  en cours\n", socket_com[s_info->list->id].end);*/
+list.c:      //      if (s_info->list != NULL && s_info->list->next != NULL)
+list.c:	s_info->list = s_info->list->next;
+list.c:  while (s_info->list != NULL)
+list.c:      if (s_info->list->id == id)
+list.c:      s_info->list = s_info->list->next;
+main.c:  s_info->instr[0] = strdup("avance");
+main.c:  s_info->instr[1] = strdup("droite");
+main.c:  s_info->instr[2] = strdup("gauche");
+main.c:  s_info->instr[3] = strdup("voir");
+main.c:  s_info->instr[4] = strdup("prend");
+main.c:  s_info->instr[5] = strdup("pose");
+main.c:  s_info->instr[6] = strdup("expulse");
+main.c:  s_info->instr[7] = strdup("broadcast");
+main.c:  s_info->instr[8] = strdup("inventaire");
+main.c:  s_info->instr[9] = strdup("incantation");
+main.c:  s_info->instr[10] = strdup("connect_nbr");
+map2.c:  while (y < s_info->height)
+map2.c:      while (x < s_info->width)
+obj.c:      dprintf(s_info->graph, "pdr %d %d\n", socket_com[n].socket, num);
+obj.c:      dprintf(s_info->graph, "pgt %d %d\n", socket_com[n].socket, num);
+obj.c:  if (s_info->map[x][y][inc + 1] == -2 && inc != 0)
+obj.c:    s_info->map[x][y][inc] = -2;
+obj.c:    s_info->map[x][y][inc] = -1;
+obj.c:    socket_com[n].pv += 126 / s_info->delay;
+obj.c:  while (i < 7 && strcmp(s_info->stone[i], str) != 0)
+obj.c:  while (s_info->map[x][y][inc] != -2)
+obj.c:    if (s_info->map[x][y][inc++] == i && bol == 0)
+obj.c:  if (s_info->map[x][y][j] == -2 && j < 20)
+obj.c:    s_info->map[x][y][j + 1] = -2;
+obj.c:  s_info->map[x][y][j] = i;
+obj.c:  while (i < 7 && strcmp(s_info->stone[i], str) != 0)
+obj.c:    while (s_info->map[x][y][j] > 0 && j < 20)
+parse_act.c:      dprintf(s_info->graph, "ppo %d %d %d\n", socket_com[n].socket,
+parse_act.c:      dprintf(s_info->graph, "ppo %d %d %d\n", socket_com[n].socket,
+parse_act.c: 	  dprintf(socket_com[n].socket, "%s : %d", s_info->stone[i],
+parse_sui.c:    dprintf(s_info->graph, "suc\n");
+printfct.c:  while (y < s_info->height)
+printfct.c:      while (x < s_info->width)
+server.c:  s_info->elevation[0] = &check_first;
+server.c:  s_info->elevation[1] = &check_second;
+server.c:  s_info->elevation[2] = &check_third;
+server.c:  s_info->elevation[3] = &check_fourth;
+server.c:  s_info->elevation[4] = &check_fifth;
+server.c:  s_info->elevation[5] = &check_sixth;
+server.c:  s_info->elevation[6] = &check_seventh;
+server.c:  s_info->graph = 0;
+server.c:  s_info->list = NULL;
+server.c:  s_info->egg = NULL;
+socket.c:  s_info->server_sin.sin_family = AF_INET;
+socket.c:  s_info->server_sin.sin_port = htons(s_info->port);
+socket.c:  s_info->server_sin.sin_addr.s_addr = INADDR_ANY;
+socket.c:  if (bind(socket_s, (struct sockaddr *)&(s_info->server_sin),
+socket.c:           sizeof(s_info->server_sin)) == -1) {
+socket.c:  socket_com[i].pv = 1260 / (float)s_info->delay;
+socket.c:  dprintf(1, "%dpv du joueur %d:%3f", s_info->delay, socket_com[i].socket, socket_com[i].pv);
+team.c:  while (s_info->team[i])
+team.c:      dprintf(s_info->graph,"tna %s\n", s_info->team[i]);
+team.c:      s_info->graph = socket_com[n].socket;
+team.c:      dprintf(s_info->graph, "msz %d %d\n", s_info->width, s_info->height);
+team.c:      dprintf(s_info->graph, "sgt %d\n", s_info->delay);
+team.c:  dprintf(s_info->graph, "pnw %d %d %d %d %s\n", socket_com[n].socket,
+team.c:	    s_info->client - s_info->nbteam[i], s_info->width, s_info->height);
+team.c:  my_printsd(socket_com[n].socket, "%d", s_info->client - s_info->nbteam[i]
+team.c:  my_printsd(socket_com[n].socket, "%d %d", s_info->width, s_info->height);
+team.c:      while (s_info->team[i] != NULL)
+team.c:	  if (strcmp(s_info->team[i], str) == 0)
+team.c:	      if (s_info->nbteam[i] != s_info->client + sup)
+team.c:		s_info->nbteam[i] += 1;
+team.c:	      socket_com[n].team = strdup(s_info->team[i]);
+time.c:  while (s_info->instr[i])
+time.c:      if (i < 8 && strncmp(str, s_info->instr[i],
+time.c:			   strlen(s_info->instr[i])) == 0)
+time.c:	res = 7.0 / s_info->delay;
+time.c:      else if (i == 8 && strncmp(str, s_info->instr[i],
+time.c:				 strlen(s_info->instr[i])) == 0)
+time.c:	res = 1.0 /s_info->delay;
+time.c:	if (i == 9 && strncmp(str, s_info->instr[i],
+time.c:			      strlen(s_info->instr[i])) == 0)
+time.c:	  res = 300.0 / s_info->delay;
+time.c:	else if (i == 10 && strncmp(str, s_info->instr[i],
+time.c:				    strlen(s_info->instr[i])) == 0)
+time.c:	  res = 42.0 / s_info->delay;
+util.c:  dprintf(1,"listening on port %d...\n", s_info->port);
+util.c:  dprintf(1, "Configuration Max(%d) World(%d*%d) T(%d)\n", s_info->client,
+util.c:	    s_info->width, s_info->height, s_info->delay);
+util.c:  while (s_info->team[i])
+util.c:      dprintf(1, "\tName(%s): Max(%d)\n", s_info->team[i], s_info->client);
+verif_cours.c:	  socket_com[n].pv = 128 / (float)s_info->delay;
+verif_cours.c:      dprintf(s_info->graph, "pdi %d\n", socket_com[n].socket);
+verif_cours.c:	      s_info->list = stock_list(s_info, buffer, n);
+voir.c:  while (s_info->map[x][y][n] != -2)
+voir.c:      i = s_info->map[x][y][n];
+voir.c:      if (s_info->map[x][y][n] != -1)
+voir.c:	dprintf(socket_com[sock].socket, " %d %d: %s", x, y, s_info->stone[i]);
+voir.c:      x = verif_negla_voir(socket_com[n].x, r * -1, s_info->width);
+voir.c:      y = verif_negla_voir(socket_com[n].y, r * -1, s_info->height);
+voir.c:	  x = verif_maxla_voir(x, 1, s_info->width);
+voir.c:      x = verif_negla_voir(socket_com[n].x, r * -1, s_info->width);
+voir.c:      y = verif_max_haut_voir(socket_com[n].y, r, s_info->height);
+voir.c:	  x = verif_maxla_voir(x, 1, s_info->width);
+voir.c:      x = verif_max_haut_voir(socket_com[n].x, r, s_info->width);
+voir.c:      y = verif_negla_voir(socket_com[n].y, r*(-1), s_info->height);
+voir.c:	  y = verif_maxla_voir(y, 1, s_info->height);
+voir.c:      x = verif_negla_voir(socket_com[n].x, r*(-1), s_info->width);
+voir.c:      y = verif_negla_voir(socket_com[n].y, r*(-1), s_info->height);
+voir.c:	  y = verif_maxla_voir(y, 1, s_info->height);
